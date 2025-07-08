@@ -1,15 +1,16 @@
 var formulario = document.querySelector("#form")
 
 formulario.onsubmit = function(e) {
-
-  e.prevent();
+//agregué default
+  e.preventDefault();
   
   var n = formulario.elements[0]
   var e = formulario.elements[1]
   var na = formulario.elements[2]
 
   var nombre = n.value
-  var edad = e.value
+  //convierte tipo de dato
+  var edad = parseInt(e.value);
 
   var i = na.selectedIndex
   var nacionalidad = na.options[i].value
@@ -40,7 +41,7 @@ document.body.appendChild(botonBorrar);
 function agregarInvitado(nombre, edad, nacionalidad) {
 
   if (nacionalidad === "ar") {
-    nacionalidad = "Argentina"
+    nacionalidad = "Argentina";
   }
   else if (nacionalidad === "mx") {
     nacionalidad = "Mexicana"
@@ -55,14 +56,15 @@ function agregarInvitado(nombre, edad, nacionalidad) {
 var lista = document.getElementById("lista-de-invitados")
 
 var elementoLista = document.createElement("div")
-elementoLista.classList.added("elemento-lista")
+elementoLista.classList.add("elemento-lista")
 lista.appendChild(elementoLista)
 
 var spanNombre = document.createElement("span")
 var inputNombre = document.createElement("input")
 var espacio = document.createElement("br")
 spanNombre.textContent = "Nombre: "
-inputNombre.value = nombre 
+//validación de nombre corregida
+inputNombre.value = true;
 elementoLista.appendChild(spanNombre)
 elementoLista.appendChild(inputNombre)
 elementoLista.appendChild(espacio)
@@ -92,6 +94,6 @@ elementoLista.appendChild(botonBorrar);
 
  botonBorrar.onclick = function() {
 // this.parentNode.style.display = 'none';
-botonBorrar.parentNode.remove()
+botonBorrar.parentNode.remove("none")
   }
 }
